@@ -1,8 +1,24 @@
 import axios from "axios";
 
 export default function getImagesByQuery(query) {
-  axios
-    .get("")
-    .then((response) => {})
-    .catch((error) => {});
+  const params = new URLSearchParams({
+    key: "51145498-f51992c20e23a6f6f425bd97f",
+    q: query,
+    image_type: "photo",
+    orientation: "horizontal",
+    min_width: 320,
+    min_height: 200,
+    safesearch: "true",
+    per_page: 9,
+  });
+  const url = `https://pixabay.com/api/?${params}`;
+  return axios
+    .get(url)
+    .then((response) => {
+      return response.data.hits;
+    })
+    .catch((error) => {
+      console.error("Ошибка", error);
+      return [];
+    });
 }
