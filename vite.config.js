@@ -9,6 +9,8 @@ export default defineConfig(({ command }) => {
     define: {
       [command === "serve" ? "global" : "_global"]: {},
     },
+    // Добавляем base для GitHub Pages
+    base: process.env.NODE_ENV === "production" ? "/goit-js-hw-11/" : "/",
     root: "src",
     build: {
       sourcemap: true,
