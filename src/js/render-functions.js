@@ -1,6 +1,5 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import getImagesByQuery from "pixabay-api.js";
 
 const lightbox = new SimpleLightbox(".gallery a", {
   caption: true,
@@ -9,23 +8,23 @@ const lightbox = new SimpleLightbox(".gallery a", {
 const gallery = document.querySelector(".gallery");
 
 function createGallery(images) {
-  gallery.insertAdjacentHTML(
-    "beforeend",
-    images.forEach((image) => {
-      `<li> 
-      <a href= '${image.largeImageURL}'>
-       <img src='${image.webformatURL}' alt="${image.tags}">
+  let markup = "";
+
+  images.forEach((image) => {
+    markup += `<li> 
+      <a href= ${image.largeImageURL}>
+       <img src=${image.webformatURL} alt="${image.tags}">
        </a>
        <div class="under-image-info">
-       <p> <strong> Likes </strong> <br> '${image.likes}' </p>
-       <p> <strong> Views </strong> <br> '${image.views}' </p>
-       <p> <strong> Comments </strong> <br> '${image.comments}' </p>
-       <p> <strong> Downloads </strong> <br> '${image.downloads}' </p>
+       <p> <strong> Likes </strong> <br> ${image.likes} </p>
+       <p> <strong> Views </strong> <br> ${image.views} </p>
+       <p> <strong> Comments </strong> <br> ${image.comments} </p>
+       <p> <strong> Downloads </strong> <br> ${image.downloads} </p>
        </div>
 
     </li> `;
-    }),
-  );
+  });
+  gallery.insertAdjacentHTML("beforeend", markup);
 
   lightbox.refresh();
 }
@@ -36,4 +35,4 @@ function showLoader() {}
 
 function hideLoader() {}
 
-export { createGallery, clearGallery, showLoader, hideLoader, inputValue };
+export { createGallery, clearGallery, showLoader, hideLoader };

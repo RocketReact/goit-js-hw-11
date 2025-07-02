@@ -24,7 +24,7 @@ formSubmit.addEventListener("submit", async function (e) {
 
 async function getImages() {
   const iziToastDefaults = {
-    position: "top-right",
+    position: "topRight",
     timeout: 4000,
     close: true,
     progressBar: true,
