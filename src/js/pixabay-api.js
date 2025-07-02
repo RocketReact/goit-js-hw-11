@@ -6,8 +6,8 @@ export default function getImagesByQuery(query) {
     q: query,
     image_type: "photo",
     orientation: "horizontal",
-    min_width: 320,
-    min_height: 200,
+    max_width: 320,
+    max_height: 200,
     safesearch: "true",
     per_page: 9,
   });

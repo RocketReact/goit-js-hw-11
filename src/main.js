@@ -11,13 +11,15 @@ const formSubmit = document.getElementById("form");
 
 let inputValue = "";
 
-formSubmit.addEventListener("submit", function (e) {
+formSubmit.addEventListener("submit", async function (e) {
   e.preventDefault();
   inputValue = formSubmit.elements["search-text"].value;
   if (inputValue === "") {
   }
 
-  createGallery();
+  const images = await getImages();
+
+  createGallery(images);
 });
 
 async function getImages() {
@@ -31,9 +33,9 @@ async function getImages() {
     pauseOnHover: true,
   };
   try {
-    const images = await getImagesByQuery(inputValue);
+    const imagesArr = await getImagesByQuery(inputValue);
 
-    if (images.length === 0) {
+    if (imagesArr.length === 0) {
       iziToast.warning({
         message:
           "Sorry, there are no images matching your search query. Please try again!",
@@ -43,14 +45,14 @@ async function getImages() {
       return [];
     }
     iziToast.success({
-      message: "",
+      message: `Success! We find ${imagesArr.length} images!`,
       color: "green",
       ...iziToastDefaults,
     });
-    return images;
+    return imagesArr;
   } catch (error) {
     iziToast.error({
-      message: "",
+      message: `Oops, something went wrong! ${error}`,
       color: "red",
       ...iziToastDefaults,
     });
