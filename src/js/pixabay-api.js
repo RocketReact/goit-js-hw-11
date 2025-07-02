@@ -1,9 +1,8 @@
 import axios from "axios";
 
-function getImagesByQuery(query) {
+export default function getImagesByQuery(query) {
   axios
     .get("")
     .then((response) => {})
     .catch((error) => {});
 }
-getImagesByQuery("");
