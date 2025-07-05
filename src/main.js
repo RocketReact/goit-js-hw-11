@@ -15,6 +15,7 @@ formSubmit.addEventListener("submit", async function (e) {
   e.preventDefault();
   inputValue = formSubmit.elements["search-text"].value;
   clearGallery();
+
   const images = await getImages();
   createGallery(images);
 });
@@ -30,6 +31,7 @@ async function getImages() {
     pauseOnHover: true,
   };
   try {
+    showLoader();
     const imagesArr = await getImagesByQuery(inputValue);
 
     if (imagesArr.length === 0) {
@@ -49,5 +51,7 @@ async function getImages() {
       color: "red",
       ...iziToastDefaults,
     });
+  } finally {
+    hideLoader();
   }
 }
