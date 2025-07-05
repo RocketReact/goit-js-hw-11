@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//TODO get array img axios API Pixabay
 export default function getImagesByQuery(query) {
   const params = new URLSearchParams({
     key: "51145498-f51992c20e23a6f6f425bd97f",

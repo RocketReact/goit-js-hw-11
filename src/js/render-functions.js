@@ -1,12 +1,14 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+//TODO default settings for simplelightbox
 const lightbox = new SimpleLightbox(".gallery a", {
   caption: true,
   captionDelay: 250,
 });
 const gallery = document.querySelector(".gallery");
 
+//TODO create and add gallery to DOM
 function createGallery(images) {
   let markup = "";
 
@@ -28,7 +30,7 @@ function createGallery(images) {
 
   lightbox.refresh();
 }
-
+//TODO clear gallery through innerHTML
 function clearGallery() {
   const gallery = document.querySelector(".gallery"); // или ваш селектор
   if (gallery) {
@@ -36,13 +38,14 @@ function clearGallery() {
   }
 }
 
+//TODO show spinner
 function showLoader() {
   const loader = document.querySelector(".loader");
   if (loader) {
     loader.style.display = "block";
   }
 }
-
+//TODO hide spinner
 function hideLoader() {
   const loader = document.querySelector(".loader");
   if (loader) {

@@ -12,6 +12,7 @@ const formSubmit = document.querySelector("#form");
 
 let inputValue = "";
 
+//TODO create gallery => submit trigger
 formSubmit.addEventListener("submit", async function (e) {
   e.preventDefault();
   inputValue = formSubmit.elements["search-text"].value;
@@ -20,6 +21,7 @@ formSubmit.addEventListener("submit", async function (e) {
   createGallery(images);
 });
 
+//TODO get images by input value, show iziToast messages
 async function getImages() {
   const iziToastDefaults = {
     position: "topRight",
