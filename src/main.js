@@ -6,6 +6,7 @@ import {
   hideLoader,
 } from "./js/render-functions.js";
 import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
 const formSubmit = document.querySelector("#form");
 
@@ -15,7 +16,6 @@ formSubmit.addEventListener("submit", async function (e) {
   e.preventDefault();
   inputValue = formSubmit.elements["search-text"].value;
   clearGallery();
-
   const images = await getImages();
   createGallery(images);
 });
@@ -51,6 +51,7 @@ async function getImages() {
       color: "red",
       ...iziToastDefaults,
     });
+    return [];
   } finally {
     hideLoader();
   }

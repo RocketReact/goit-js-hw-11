@@ -12,8 +12,8 @@ function createGallery(images) {
 
   images.forEach((image) => {
     markup += `<li> 
-      <a href= ${image.largeImageURL}>
-       <img src=${image.webformatURL} alt="${image.tags}">
+      <a href= ${image.largeImageURL} class="large-img">
+       <img src=${image.webformatURL} class="small-img" alt="${image.tags}">
        </a>
        <div class="under-image-info">
        <p> <span> Likes </span> <br> ${image.likes} </p>
