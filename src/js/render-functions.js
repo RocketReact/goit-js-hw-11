@@ -16,10 +16,10 @@ function createGallery(images) {
        <img src=${image.webformatURL} alt="${image.tags}">
        </a>
        <div class="under-image-info">
-       <p> <strong> Likes </strong> <br> ${image.likes} </p>
-       <p> <strong> Views </strong> <br> ${image.views} </p>
-       <p> <strong> Comments </strong> <br> ${image.comments} </p>
-       <p> <strong> Downloads </strong> <br> ${image.downloads} </p>
+       <p> <span> Likes </span> <br> ${image.likes} </p>
+       <p> <span> Views </span> <br> ${image.views} </p>
+       <p> <span> Comments </span> <br> ${image.comments} </p>
+       <p> <span> Downloads </span> <br> ${image.downloads} </p>
        </div>
 
     </li> `;
@@ -29,7 +29,12 @@ function createGallery(images) {
   lightbox.refresh();
 }
 
-function clearGallery() {}
+function clearGallery() {
+  const gallery = document.querySelector(".gallery"); // или ваш селектор
+  if (gallery) {
+    gallery.innerHTML = "";
+  }
+}
 
 function showLoader() {}
 

@@ -7,18 +7,15 @@ import {
 } from "./js/render-functions.js";
 import iziToast from "izitoast";
 
-const formSubmit = document.getElementById("form");
+const formSubmit = document.querySelector("#form");
 
 let inputValue = "";
 
 formSubmit.addEventListener("submit", async function (e) {
   e.preventDefault();
   inputValue = formSubmit.elements["search-text"].value;
-  if (inputValue === "") {
-  }
-
+  clearGallery();
   const images = await getImages();
-
   createGallery(images);
 });
 
@@ -38,17 +35,13 @@ async function getImages() {
     if (imagesArr.length === 0) {
       iziToast.warning({
         message:
-          "Sorry, there are no images matching your search query. Please try again!",
+          "Sorry, there are no images matching <br> your search query. Please try again!",
         color: "red",
         ...iziToastDefaults,
       });
+
       return [];
     }
-    iziToast.success({
-      message: `Success! We find ${imagesArr.length} images!`,
-      color: "green",
-      ...iziToastDefaults,
-    });
     return imagesArr;
   } catch (error) {
     iziToast.error({
