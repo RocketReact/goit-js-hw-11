@@ -6,7 +6,7 @@ import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
-    base: command === 'serve' ? '/' : '/goit-js-hw-11/',
+    // Убираем base отсюда, так как передаем через --base в команде build
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
